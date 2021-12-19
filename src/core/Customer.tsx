@@ -10,9 +10,9 @@ export default class Customer {
         this.#idade = idade
     }
 
-    /* static vazio() {
+    static vazio() {
         return new Customer('', 0)
-    } */
+    }
 
     get id() {
         return this.#id
