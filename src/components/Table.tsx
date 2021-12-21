@@ -17,7 +17,7 @@ export default function Table(props: TableProps) {
                 <th className="text-left p-3">Id</th>
                 <th className="text-left p-3">Nome</th>
                 <th className="text-left p-3">Idade</th>
-                {exibirAcoes ? <th className="p-3">Action</th> : false}
+                {exibirAcoes ? <th className="p-3">Ação</th> : false}
             </tr>
         )
     }
@@ -36,6 +36,7 @@ export default function Table(props: TableProps) {
         })
     }
 
+    /* BOTÕES PARA GERENCIAR AÇÕE DE EDITAR/EXCLUIR */
     function renderizarAcoes(cliente: Customer) {
         return (
             <td className="flex justify-center">

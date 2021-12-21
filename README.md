@@ -9,7 +9,7 @@ Principais conteúdos estudados/praticados neste módulo:
 - Integração JavaScript / TypeScript
 - Utilização do TailwindCSS
 
-
+##
 ### To run the the project:
 
 ```bash

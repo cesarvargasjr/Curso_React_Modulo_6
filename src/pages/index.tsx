@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import Form from "../components/Form";
 import Layout from "../components/Layout";
 import Table from "../components/Table";
 import Cliente from "../core/Customer";
+import CustomerRepository from "../core/CustomerRepository";
+import ColectionCustomer from "../firebase/db/ColectionCustomer";
 
 export default function Home() {
 
@@ -13,13 +15,18 @@ export default function Home() {
   /* CONSTANTE PARA CADASTRAR CLIENTES INICIANDO COM O ESTADO VAZIO */
   const [cliente, setCliente] = useState<Cliente>(Cliente.vazio())
 
-  const clientes = [
-    new Cliente('1', 'Cesar', 26),
-    new Cliente('2', 'Gabriel', 25),
-    new Cliente('3', 'Ingrid', 27),
-    new Cliente('4', 'Camila', 24),
-    new Cliente('5', 'Teresa', 60),
-  ]
+  const [clientes, setClientes] = useState<Cliente[]>([])
+
+  const repo: CustomerRepository = new ColectionCustomer()
+
+  useEffect(obterTodos, [])
+
+  function obterTodos() {
+    repo.obterTodos().then(clientes => {
+      setClientes(clientes)
+      setVisivel('tabela')
+    })
+  }
 
   /* FUNÇÕES PARA EXIBIR OS BOTÕES/AÇÕES, CRIADA COM MESMO NOME */
   function customerSelect(cliente: Cliente) {
@@ -28,18 +35,19 @@ export default function Home() {
   }
 
   /* FUNÇÃO PARA EXCLUIR UM CLIENTE */
-  function customerExclude(cliente: Cliente) {
-    console.log(`Excluindo... ${cliente.nome}`)
+  async function customerExclude(cliente: Cliente) {
+    await repo.excluir(cliente)
+    obterTodos()
   }
 
   /* FUNÇÃO PARA SALVAR/EDITAR OS DADOS DE UM CLIENTE */
-  function saveCustomer (cliente: Cliente) {
-    console.log(cliente)
-    setVisivel('tabela')
+  async function saveCustomer(cliente: Cliente) {
+    await repo.salvar(cliente)
+    obterTodos()
   }
 
   /* FUNÇÃO CRIAR UM NOVO CLIENTE */
-  function newCustomer () {
+  function newCustomer() {
     setCliente(Cliente.vazio())
     setVisivel('form')
   }
@@ -55,7 +63,7 @@ export default function Home() {
         {visivel === 'tabela' ? (
           <div>
             <div className="flex justify-end">
-              <Button cor="green" className="mb-4" 
+              <Button cor="green" className="mb-4"
                 onClick={newCustomer}>
                 Novo CLiente
               </Button>
@@ -66,9 +74,9 @@ export default function Home() {
             />
           </div>
         ) : (
-          <Form 
+          <Form
             cliente={cliente}
-            mudarCliente = {saveCustomer} 
+            mudarCliente={saveCustomer}
             cancelar={() => setVisivel('tabela')}
           />
         )}
