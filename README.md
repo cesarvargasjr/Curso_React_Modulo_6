@@ -2,6 +2,8 @@
 
 ### NOME DO CURSO: React + Redux: Fundamentos e 2 Apps do Absoluto ZERO!
 
+No sexto módulo do curso, desenvolvemos uma aplicação simples para cadastrar/editar/excluir clientes integrando ao banco de dados firebase.
+
 Principais conteúdos estudados/praticados neste módulo:
 
 - Utilização do Framework NextJS
