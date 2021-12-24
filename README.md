@@ -23,6 +23,6 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 
-![01](https://user-images.githubusercontent.com/72532360/147373631-8403f90f-d1cd-4eca-b8fa-cda16b216cce.jpg)
+![001](https://user-images.githubusercontent.com/72532360/147373651-47d6a734-e0d6-483e-9391-c82f90330d4a.jpg)
 
-![02](https://user-images.githubusercontent.com/72532360/147373633-05f3a7e9-5c11-4f3a-8079-7f7c400ae3d4.jpg)
+![002](https://user-images.githubusercontent.com/72532360/147373652-ad68a925-1a60-4913-a5c1-dbbf95dac845.jpg)
