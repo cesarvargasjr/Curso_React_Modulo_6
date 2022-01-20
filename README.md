@@ -12,7 +12,7 @@ Principais conteúdos estudados/praticados neste módulo:
 - Utilização do TailwindCSS
 
 ##
-### To run the the project:
+### To run the project:
 
 ```bash
 npm run dev
